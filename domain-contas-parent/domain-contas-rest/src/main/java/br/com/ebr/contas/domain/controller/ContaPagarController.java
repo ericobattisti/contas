@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.ebr.contas.domain.dto.ContaPagarGet;
-import br.com.ebr.contas.domain.dto.ContaPagarPost;
-import br.com.ebr.contas.domain.dto.ContaPagarPut;
-import br.com.ebr.contas.domain.dto.RegraAtrasoGet;
+import br.com.ebr.contas.domain.controller.dto.ContaPagarGet;
+import br.com.ebr.contas.domain.controller.dto.ContaPagarPost;
+import br.com.ebr.contas.domain.controller.dto.ContaPagarPut;
+import br.com.ebr.contas.domain.controller.dto.RegraAtrasoGet;
 import br.com.ebr.contas.domain.entity.ContaPagar;
 import br.com.ebr.contas.domain.entity.RegraAtraso;
 import br.com.ebr.contas.domain.mapper.ContaPagarMapper;

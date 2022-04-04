@@ -11,7 +11,7 @@ import br.com.ebr.contas.domain.entity.RegraAtraso;
 @Repository
 @Transactional
 public interface RegraAtrasoRepository extends JpaRepository<RegraAtraso, Integer> {
-	
+
 	List<RegraAtraso> findByOrderByDiasAtrasoAsc();
 
 }

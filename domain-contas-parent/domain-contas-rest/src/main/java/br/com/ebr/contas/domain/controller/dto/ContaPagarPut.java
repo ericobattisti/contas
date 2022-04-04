@@ -1,9 +1,13 @@
-package br.com.ebr.contas.domain.dto;
+package br.com.ebr.contas.domain.controller.dto;
 
 import javax.validation.constraints.NotNull;
 
 import io.swagger.annotations.ApiModel;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @ApiModel(description = "Classe que representa a alteração da conta a pagar.")
 public class ContaPagarPut extends ContaPagarPost {
 	
@@ -11,13 +15,5 @@ public class ContaPagarPut extends ContaPagarPost {
 	
 	@NotNull
 	private Long id;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 }

@@ -11,7 +11,7 @@ import br.com.ebr.contas.domain.entity.ContaPagar;
 @Repository
 @Transactional
 public interface ContaPagarRepository extends JpaRepository<ContaPagar, Long> {
-	
+
 	List<ContaPagar> findByOrderByDataVencimentoDesc();
 
 }

@@ -38,6 +38,12 @@
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
 		</dependency>
+		
+		<dependency>
+			<groupId>br.com.ebr</groupId>
+			<artifactId>domain-contas-model</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
 	</dependencies>
 	
 </project>

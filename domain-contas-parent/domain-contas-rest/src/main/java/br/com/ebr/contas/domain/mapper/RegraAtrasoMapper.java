@@ -8,7 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.com.ebr.contas.domain.dto.RegraAtrasoGet;
+import br.com.ebr.contas.domain.controller.dto.RegraAtrasoGet;
 import br.com.ebr.contas.domain.entity.RegraAtraso;
 
 @Component

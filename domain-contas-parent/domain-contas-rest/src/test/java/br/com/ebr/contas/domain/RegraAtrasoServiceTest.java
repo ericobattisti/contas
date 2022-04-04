@@ -1,23 +1,53 @@
 package br.com.ebr.contas.domain;
 
+import static org.mockito.Mockito.when;
+
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.List;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
-import br.com.ebr.contas.ContasApplication;
 import br.com.ebr.contas.domain.entity.ContaPagar;
+import br.com.ebr.contas.domain.entity.RegraAtraso;
+import br.com.ebr.contas.domain.repository.RegraAtrasoRepository;
 import br.com.ebr.contas.domain.service.RegraAtrasoService;
 
-@SpringBootTest(classes = ContasApplication.class)
-public class RegraAtrasoServiceTest {
+class RegraAtrasoServiceTest {
+	
+	private AutoCloseable closeable;
+	
+	@Mock
+	private RegraAtrasoRepository regraAtrasoRepository;
 
-	@Autowired
+	@InjectMocks
 	private RegraAtrasoService service;
+	
+	@BeforeEach
+	void setUp() throws IOException {
+		closeable = MockitoAnnotations.openMocks(this);
+		
+		List<RegraAtraso> regraAtrasos = List.of(
+			RegraAtraso.builder().diasAtraso(-1).porcentagemMulta(BigDecimal.valueOf(5)).porcentagemJurosDia(BigDecimal.valueOf(0.3)).build(),
+			RegraAtraso.builder().diasAtraso(3).porcentagemMulta(BigDecimal.valueOf(2)).porcentagemJurosDia(BigDecimal.valueOf(0.1)).build(),
+			RegraAtraso.builder().diasAtraso(5).porcentagemMulta(BigDecimal.valueOf(3)).porcentagemJurosDia(BigDecimal.valueOf(0.2)).build()
+		);
+		
+		when(regraAtrasoRepository.findByOrderByDiasAtrasoAsc()).thenReturn(regraAtrasos);
+	}
+	
+	@AfterEach
+    void closeService() throws Exception {
+        closeable.close();
+    }
 
 	@Test
 	void aplicaRegraAtrasoContaEmDia() {
